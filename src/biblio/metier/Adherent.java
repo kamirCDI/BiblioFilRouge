@@ -6,10 +6,15 @@ import java.util.Date;
 
 /**
  * @author afpa
+ * Classe de l'adhérent inscrit à la bibliothèque
  *
  */
 public class Adherent extends Utilisateur{
 
+	/****attributs : telephone
+	 *               nbMaxPrets : Nombre maximum de prêts autorisé 
+	 *               dureeMaxPrest : durée maximum de prêts
+	 */
 	private String telephone;
 	private static int nbMaxPrets=3;
 	private static int dureeMaxPrets=15;
@@ -21,7 +26,7 @@ public class Adherent extends Utilisateur{
 	}
 	
 	public Adherent() throws ParseException{
-		this("Devanne", "camille", sdf.parse("02/05/1970"), "feminin", 3, "kamille", "foufou", "0102253563");
+		this("Devanne", "camille", sdf.parse("02/05/1970"), "feminin", 2, "DevCa", "Calecture", "0102253563");
 	}
 
 	/***************************Getters et Setters*******************************************/
@@ -36,29 +41,25 @@ public class Adherent extends Utilisateur{
 		this.telephone = telephone;
 	}
 
-	/********************************classes métier*********************************************/
-	public Boolean isConditionsPretAcceptees(){
-		if(getNbEmpruntsEnCours()>=3)
-			return false;
-		else	
-			return true;
-	}
-	
-	
-
-	public int getNbRetards(){
-		return 0;
-	}
-	
+	/********************************toString()*********************************************************/
 	@Override
 	public String toString() {
 		return super.toString() + "Adherent [telephone=" + telephone + "]";
 	}
 	
+	
+	/********************************classes métiers*********************************************/
+	public Boolean isConditionsPretAcceptees(){
+		return (getNbEmpruntsEnCours() < 3);
+	}
+ 
+	
 	@Override
 	public void addEmpruntEnCours(EmpruntEnCours unEmpruntEnCours) throws BiblioException {
-		if (isConditionsPretAcceptees())
+		if (isConditionsPretAcceptees()){
 			super.addEmpruntEnCours(unEmpruntEnCours);
+			unEmpruntEnCours.setEmprunteur(this);
+		}
 		else 
 			throw new BiblioException("Les conditions pour un nouveau prêt ne sont pas satisfaites");
 	}

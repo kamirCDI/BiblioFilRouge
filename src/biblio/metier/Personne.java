@@ -9,14 +9,13 @@ import java.text.SimpleDateFormat;
 /**
  * @author afpa
  * 
- *Classe qui regroupe les attributs communs des personnes fréquentant la bibliothèque
+ *Classe qui regroupe les attributs communs des personnes en relation avec la bibliothèque
  */
 
 public class Personne {
 	
 /*attributs: nom , prenom, date de naissance, et sexe de la personne
- */
-/* attribut sdf est utilisé pour tenir un objet Date */
+  attribut sdf est utilisé pour tenir un objet Date */
 	
 	private String nom;
 	private String prenom;
@@ -73,7 +72,7 @@ public class Personne {
 	@Override
 	public String toString() {
 		return "Personne [nom=" + nom + ", prenom=" + prenom
-				+ ", dateNaissance=" + sdf.format(dateNaissance) + ", sexe=" + sexe + "]";
+				+ ", dateNaissance=" + sdf.format(dateNaissance) + ", sexe=" + sexe;
 	}
 	
 	

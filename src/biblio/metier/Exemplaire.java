@@ -13,13 +13,13 @@ public class Exemplaire {
 	private String isbn;
 	private EmpruntEnCours emprunt;
 	public static SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
-	
+
 
 /*******************************constructeur***********************************************/
 
 	
 
-	public Exemplaire(int id, Date dateAchat, String isbn) throws BiblioException{
+	public Exemplaire(int id, Date dateAchat, String isbn) throws BiblioException, ParseException{
 		setIdExemplaire(id);
 		setDateAchat(dateAchat);
 		setIsbn(isbn);	
@@ -71,9 +71,16 @@ public class Exemplaire {
 		return emprunt;
 	}
 	
+	
 	public void setEmpruntEnCours(EmpruntEnCours empruntEnCours){
-			this.emprunt= empruntEnCours;
-			setStatus(EnumStatusExemplaire.PRETE);		
+		if (empruntEnCours != null){
+				this.emprunt= empruntEnCours;
+				setStatus(EnumStatusExemplaire.PRETE);
+		}
+		else {
+			this.emprunt = null;
+			setStatus(EnumStatusExemplaire.DISPONIBLE);
+		}
 	}
 
 	
@@ -81,7 +88,7 @@ public class Exemplaire {
 /**************************toString***********************************************************/
 	@Override
 	public String toString() {
-		if (emprunt.getEmprunteur() == null)
+		if (getStatus() == EnumStatusExemplaire.DISPONIBLE) 
 			return "Exemplaire [idExemplaire=" + idExemplaire + ", dateAchat="
 				+ sdf.format(dateAchat) + ", status=" + status + ", isbn=" + isbn + "]";
 		else

@@ -6,11 +6,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import biblio.metier.*;
 
-public class TestEmpruntEnCours {
 
+public class TestEmpruntEnCours {
+	
+	
+	public static SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+	
 	public static void main(String[] args) throws ParseException, BiblioException { 
 		
-		
+			
 /**********************************Instanciation de la classe Personne, Utilisateur, Adherent, Employe****************************************************************/
 		
                          /***************************Test classe Personne****************************************************************************/
@@ -26,7 +30,6 @@ public class TestEmpruntEnCours {
 		System.out.println();
 		Utilisateur utilisateur1 = new Utilisateur();
 		System.out.println(utilisateur1);
-		System.out.println("Nombre d'emprunts en cours: " + utilisateur1.getNbEmpruntsEnCours());
 		System.out.println();
 		System.out.println();
 		
@@ -35,18 +38,24 @@ public class TestEmpruntEnCours {
 		System.out.println();		
 		Adherent adherent1 = new Adherent();
 		System.out.println(adherent1);
+		System.out.println();
+		System.out.println();
 
 	
 	
-/****************************************Instanciation d'un exemplaire*************************************************************/
+/****************************************Instanciation d'exemplaires*************************************************************/
 	
-	System.out.println("***************************creation d'un exemplaire****************************");
+	System.out.println("***************************creation de 4 exemplaires****************************");
 	System.out.println();		
 	Exemplaire exemplaire1 = new Exemplaire();
-	Exemplaire exemplaire2 = new Exemplaire();
-	Exemplaire exemplaire3 = new Exemplaire();
-	Exemplaire exemplaire4 = new Exemplaire();
+	
+	Exemplaire exemplaire2 = new Exemplaire(2, sdf.parse("14/03/1998"), "2NM36");
+	Exemplaire exemplaire3 = new Exemplaire(3, sdf.parse("01/05/1989"), "3KL65");
+	Exemplaire exemplaire4 = new Exemplaire(4, sdf.parse("25/08/2001"), "4JH58");
 	System.out.println(exemplaire1);
+	System.out.println(exemplaire2);
+	System.out.println(exemplaire3);
+	System.out.println(exemplaire4);
 	System.out.println();
 	System.out.println();
 	
@@ -54,9 +63,12 @@ public class TestEmpruntEnCours {
 	
 /********************************************realiser des prêt en cours*****************************************************/
 	System.out.println("***************************Réaliser des prêts**************************************");
-
-	exemplaire1.getEmprunt().setEmprunteur(adherent1);
-	exemplaire1.getEmprunt().setExemplaire(exemplaire1);
+    
+	
+		adherent1.addEmpruntEnCours(exemplaire1.getEmprunt());
+		exemplaire1.getEmprunt().setExemplaire(exemplaire1);
+	
+	
 	
 	exemplaire2.getEmprunt().setEmprunteur(adherent1);
 	exemplaire2.getEmprunt().setExemplaire(exemplaire2);
@@ -75,9 +87,6 @@ public class TestEmpruntEnCours {
 	
 	System.out.println("***************************connaître le nombre d'emprunts****************************");
 	System.out.println();
-	adherent1.addEmpruntEnCours(exemplaire1.getEmprunt());
-	adherent1.addEmpruntEnCours(exemplaire2.getEmprunt());
-	adherent1.addEmpruntEnCours(exemplaire3.getEmprunt());
 	System.out.printf("Nombre d'emprunts en cours pour l'adherent ("+adherent1.getNom()+" "+adherent1.getPrenom()+"):");
 	System.out.println(adherent1.getNbEmpruntsEnCours());
 	System.out.println("Liste des emprunts en cours pour l'adherent ("+adherent1.getNom()+" "+adherent1.getPrenom()+"):");
@@ -86,24 +95,27 @@ public class TestEmpruntEnCours {
 	
 /*****************************************réaliser un quatrième prêt**********************************************************/
 	System.out.println("*********************************réaliser un quatrième prêt*************************************");
+	System.out.println();
 	try {
-		adherent1.addEmpruntEnCours(exemplaire4.getEmprunt());
 		exemplaire4.getEmprunt().setEmprunteur(adherent1);
 		exemplaire4.getEmprunt().setExemplaire(exemplaire4);
 	}
 	catch (BiblioException ex){
 		System.out.println("Exception :" +ex);
 	}
+	System.out.println();
+	System.out.println();
 	
 /************************************Instanciation de Employe et emprunt pour cette employe*****************************************************/
+	System.out.println(" ****************************Un employe va faire un emprunt********************************************");
+	System.out.println();
 	Employe employe1 = new Employe();
-	employe1.addEmpruntEnCours(exemplaire1.getEmprunt());
-	employe1.addEmpruntEnCours(exemplaire2.getEmprunt());
-	employe1.addEmpruntEnCours(exemplaire3.getEmprunt());
-	employe1.addEmpruntEnCours(exemplaire4.getEmprunt());
-	
-	System.out.println(employe1);
-	
-	
+	exemplaire1.getEmprunt().setEmprunteur(employe1);
+	exemplaire2.getEmprunt().setEmprunteur(employe1);
+	exemplaire3.getEmprunt().setEmprunteur(employe1);
+	exemplaire4.getEmprunt().setEmprunteur(employe1);	
+	System.out.println(exemplaire1);
+	System.out.println();
+	System.out.println("Les nombres d'emprunt en cours :" + employe1.getNbEmpruntsEnCours()); 	
 }
 }

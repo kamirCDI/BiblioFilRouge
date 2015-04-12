@@ -6,10 +6,11 @@ import java.util.Date;
 public class EmpruntEnCours {
 	
 	private Date dateEmprunt;
-	private Utilisateur emprunteur;
+	private Utilisateur unemprunteur;
 	private Exemplaire exemplaire;
 	public static SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
 	static {sdf.setLenient(false);}
+	
 
 
 	
@@ -22,13 +23,12 @@ public class EmpruntEnCours {
 	}
 	
 	public EmpruntEnCours(Date dateEmprunt, Utilisateur emprunteur) throws BiblioException {
-		setDateEmprunt(dateEmprunt);
-		setEmprunteur(emprunteur);
+		this(dateEmprunt, emprunteur, null );
 	}
 
 	
 	public EmpruntEnCours() throws BiblioException{
-		this(null,null);
+		this(null, null);
 	}
 
 	/****************************************Getters et Setters************************************************************************/
@@ -41,38 +41,32 @@ public class EmpruntEnCours {
 	}
 
 	public Utilisateur getEmprunteur() {
-		return emprunteur;
+		return unemprunteur;
 	}
 
-	public void setEmprunteur(Utilisateur emprunteur) {
-		if (emprunteur != null){
-			this.emprunteur = emprunteur;
+	public void setEmprunteur(Utilisateur emprunteur) throws BiblioException {
+		if (emprunteur != null){			
+			unemprunteur = emprunteur;
 			setDateEmprunt(new Date());
+			}		
 		}
-		 else
-			 this.emprunteur = null;
-	}
 
 	public Exemplaire getExemplaire() {
 		return exemplaire;
 	}
 	
-
-	
 	public void setExemplaire(Exemplaire exemplaire) throws BiblioException {
-			if (exemplaire != null){
-				this.exemplaire=exemplaire;
-				exemplaire.setEmpruntEnCours(this);
-			}
-			else 
-				exemplaire.setEmpruntEnCours(null);
+		if (exemplaire != null){
+			 this.exemplaire=exemplaire;
+			 exemplaire.setEmpruntEnCours(this);
+		}
 	}
 /**********************************************toString()****************************************************************************************/	
 
 	@Override
 	public String toString() {
 				return "EmpruntEnCours [dateEmprunt=" + sdf.format(dateEmprunt) + ", emprunteur=" 
-					+ emprunteur.getNom() + ", examplaire=" + exemplaire.getIdExemplaire() + "]";
+					+ unemprunteur.getNom() + ", examplaire=" + exemplaire.getIdExemplaire() + "]";
 
 	}
 
