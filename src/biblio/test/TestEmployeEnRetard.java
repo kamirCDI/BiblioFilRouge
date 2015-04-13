@@ -22,8 +22,9 @@ public class TestEmployeEnRetard {
 		Exemplaire exemplaire1 = exemplaireDao.findByKey(1);
 		Exemplaire exemplaire2 = exemplaireDao.findByKey(2);
 		
-		employe.addEmpruntEnCours(exemplaire1.getEmprunt());
-		exemplaire1.getEmprunt().setExemplaire(exemplaire1);
+		//employe.addEmpruntEnCours(exemplaire1.getEmprunt());
+		//exemplaire1.getEmprunt().setExemplaire(exemplaire1);
+		exemplaire1.getEmprunt().emprunter(exemplaire1, employe);
 		exemplaire1.getEmprunt().setDateEmprunt(sdf.parse("13/03/2015"));
 		System.out.println("L'employe :");
 		System.out.println(employe);
@@ -33,8 +34,9 @@ public class TestEmployeEnRetard {
 		System.out.println("************** Réaliser un deuxième prêt******************");
 		
 		try {
-		employe.addEmpruntEnCours(exemplaire2.getEmprunt());
-		exemplaire2.getEmprunt().setExemplaire(exemplaire2);
+		//employe.addEmpruntEnCours(exemplaire2.getEmprunt());
+		//exemplaire2.getEmprunt().setExemplaire(exemplaire2);
+			exemplaire2.getEmprunt().emprunter(exemplaire2, employe);
 		System.out.println(exemplaire2.getEmprunt());
 		}
 		catch (BiblioException e){

@@ -24,14 +24,17 @@ public class TestAdherentTroisEmprunts {
 		UtilisateursDao utilisateurDao = new UtilisateursDao();
 		Utilisateur adherent = utilisateurDao.findByKey(100);
 		
-		adherent.addEmpruntEnCours(exemplaire1.getEmprunt());
-		exemplaire1.getEmprunt().setExemplaire(exemplaire1);
+		//adherent.addEmpruntEnCours(exemplaire1.getEmprunt());
+		//exemplaire1.getEmprunt().setExemplaire(exemplaire1);
+		exemplaire1.getEmprunt().emprunter(exemplaire1, adherent);
 		
-		adherent.addEmpruntEnCours(exemplaire2.getEmprunt());
-		exemplaire2.getEmprunt().setExemplaire(exemplaire2);
+		//adherent.addEmpruntEnCours(exemplaire2.getEmprunt());
+		//exemplaire2.getEmprunt().setExemplaire(exemplaire2);
+		exemplaire2.getEmprunt().emprunter(exemplaire2, adherent);
 		
-		adherent.addEmpruntEnCours(exemplaire3.getEmprunt());
-		exemplaire3.getEmprunt().setExemplaire(exemplaire3);
+		//adherent.addEmpruntEnCours(exemplaire3.getEmprunt());
+		//exemplaire3.getEmprunt().setExemplaire(exemplaire3);
+		exemplaire3.getEmprunt().emprunter(exemplaire3, adherent);
 		
 		System.out.println("L'adherent");
 		System.out.println(adherent);
@@ -41,8 +44,9 @@ public class TestAdherentTroisEmprunts {
 		System.out.println();
 		System.out.println("********************Réaliser un quatrième prêt**********************");
 		try {
-		adherent.addEmpruntEnCours(exemplaire4.getEmprunt());
-		exemplaire4.getEmprunt().setExemplaire(exemplaire4);
+		//adherent.addEmpruntEnCours(exemplaire4.getEmprunt());
+		//exemplaire4.getEmprunt().setExemplaire(exemplaire4);
+		exemplaire4.getEmprunt().emprunter(exemplaire4, adherent);
 		System.out.println(exemplaire4.getEmprunt());
 		}
 		catch (BiblioException ex){

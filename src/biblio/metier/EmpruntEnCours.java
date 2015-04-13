@@ -59,7 +59,7 @@ public class EmpruntEnCours {
 		return exemplaire;
 	}
 	
-	public void setExemplaire(Exemplaire exemplaire) {
+/*	public void setExemplaire(Exemplaire exemplaire) {
 		if (exemplaire != null){
 			 this.exemplaire=exemplaire;
 			 exemplaire.setEmpruntEnCours(this);
@@ -71,6 +71,13 @@ public class EmpruntEnCours {
 				System.out.println("Emprunt est archivé :" + new EmpruntArchive( new Date(), this.dateEmprunt, unemprunteur, this.getExemplaire()));
 				
 			}
+	}*/
+	
+	public void setExemplaire(Exemplaire exemplaire) {
+		if (exemplaire != null){
+			 this.exemplaire=exemplaire;
+			 exemplaire.setEmpruntEnCours(this);
+		}
 	}
 /**********************************************toString()****************************************************************************************/	
 
@@ -90,6 +97,19 @@ public class EmpruntEnCours {
 		// Determine la date mini sans retard
 		Date dateMinSansRetard = cl.getTime();
 		return this.getDateEmprunt().before(dateMinSansRetard);
+	}
+	
+	public void emprunter(Exemplaire exemplaire, Utilisateur utilisateur) throws BiblioException
+	{
+		utilisateur.addEmpruntEnCours(this);
+		setExemplaire(exemplaire); 
+	}
+	
+	public void rendre(Exemplaire exemplaire, Utilisateur utilisateur) throws BiblioException
+	{
+		this.exemplaire.setEmpruntEnCours(null);
+		this.unemprunteur.removeEmpruntEnCours(this);
+		System.out.println("Emprunt est archivé :" + new EmpruntArchive( new Date(), this.dateEmprunt, unemprunteur, this.getExemplaire()));
 	}
 
 

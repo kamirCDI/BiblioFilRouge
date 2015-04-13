@@ -29,8 +29,9 @@ public class TestAdherentEnRetard {
 		Exemplaire exemplaire1 = exemplaireDao.findByKey(1);
 		Exemplaire exemplaire2 = exemplaireDao.findByKey(2);
 		
-		adherent.addEmpruntEnCours(exemplaire1.getEmprunt());
-		exemplaire1.getEmprunt().setExemplaire(exemplaire1);
+		//adherent.addEmpruntEnCours(exemplaire1.getEmprunt());
+		//exemplaire1.getEmprunt().setExemplaire(exemplaire1);
+		exemplaire1.getEmprunt().emprunter(exemplaire1, adherent);
 		exemplaire1.getEmprunt().setDateEmprunt(sdf.parse("13/03/2015"));
 		System.out.println("L'adherent :");
 		System.out.println(adherent);
@@ -40,8 +41,9 @@ public class TestAdherentEnRetard {
 		System.out.println("************** Réaliser un deuxième prêt******************");
 		
 		try {
-		adherent.addEmpruntEnCours(exemplaire2.getEmprunt());
-		exemplaire2.getEmprunt().setExemplaire(exemplaire2);
+		//adherent.addEmpruntEnCours(exemplaire2.getEmprunt());
+		//exemplaire2.getEmprunt().setExemplaire(exemplaire2);
+		exemplaire2.getEmprunt().emprunter(exemplaire2, adherent);
 		System.out.println(exemplaire2.getEmprunt());
 		}
 		catch (BiblioException e){
