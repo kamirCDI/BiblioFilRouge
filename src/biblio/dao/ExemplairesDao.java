@@ -1,4 +1,4 @@
-/**
+ /**
 
  * 
  */
@@ -27,7 +27,7 @@ public class ExemplairesDao {
 			
 		};
 	
-	public ExemplairesDao() throws BiblioException, ParseException {
+	public ExemplairesDao() throws ParseException {
 		
 	}
 	

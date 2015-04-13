@@ -28,7 +28,7 @@ public class UtilisateursDao {
 	new Employe("Guarigue", "Adel", sdf.parse("12/12/1971"), "masculin", 200, "GuaAd", "GuaBib", "1m42536", EnumCategorieEmploye.BIBLIOTHECAIRE),
 	};
 	
-	public UtilisateursDao() throws ParseException, BiblioException{
+	public UtilisateursDao() throws ParseException{
 		
 	}
 	

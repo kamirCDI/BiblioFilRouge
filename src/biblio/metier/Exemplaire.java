@@ -19,7 +19,7 @@ public class Exemplaire {
 
 	
 
-	public Exemplaire(int id, Date dateAchat, String isbn) throws BiblioException, ParseException{
+	public Exemplaire(int id, Date dateAchat, String isbn) throws ParseException{
 		setIdExemplaire(id);
 		setDateAchat(dateAchat);
 		setIsbn(isbn);	
@@ -27,7 +27,7 @@ public class Exemplaire {
 	}
 
 	
-	public Exemplaire() throws BiblioException, ParseException
+	public Exemplaire() throws ParseException
 	{
 		this(1, sdf.parse("15/02/2000"), "1MJ23");
 	}
@@ -78,6 +78,7 @@ public class Exemplaire {
 				setStatus(EnumStatusExemplaire.PRETE);
 		}
 		else {
+			setStatus(EnumStatusExemplaire.DISPONIBLE);
 			this.emprunt = null;
 			 
 		}

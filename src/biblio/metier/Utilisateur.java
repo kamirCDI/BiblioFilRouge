@@ -91,4 +91,12 @@ public class Utilisateur extends Personne {
 		unEmpruntEnCours.setEmprunteur(this);
 	}
 
+	
+	public void removeEmpruntEnCours(EmpruntEnCours unEmpruntEnCours)
+	{	
+		if (empruntEnCours.remove(unEmpruntEnCours) == true)
+		empruntEnCours.remove(unEmpruntEnCours);
+			unEmpruntEnCours.setEmprunteur(null);
+	}
+
 }

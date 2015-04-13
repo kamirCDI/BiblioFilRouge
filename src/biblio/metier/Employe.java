@@ -22,13 +22,13 @@ public class Employe extends Utilisateur{
 	
 
 /*********************************************Constructeurs**************************************************************************************/
-	public Employe(String nom, String prenom, Date dateNaissance, String sexe, int id, String pwd, String pseudonyme, String codeMatricule, EnumCategorieEmploye categorieEmploye) throws BiblioException, ParseException{
+	public Employe(String nom, String prenom, Date dateNaissance, String sexe, int id, String pwd, String pseudonyme, String codeMatricule, EnumCategorieEmploye categorieEmploye) throws ParseException{
 		super(nom, prenom, dateNaissance, sexe, id, pwd, pseudonyme);
 		setCodeMatricule(codeMatricule);
 		setCategorieEmploye(categorieEmploye);
 	}
 	
-	public Employe(String codeMatricule, EnumCategorieEmploye categorieEmploye) throws BiblioException, ParseException{
+	public Employe(String codeMatricule, EnumCategorieEmploye categorieEmploye) throws ParseException{
 		this("Garigue ", "Georges", sdf.parse("12/02/1964"), "masculin", 100, "GarGe", "valro",codeMatricule ,categorieEmploye);
 		
 	}

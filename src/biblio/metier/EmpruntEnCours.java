@@ -19,18 +19,18 @@ public class EmpruntEnCours {
 	
 	/*******************************************Constructeurs*******************************************************************/
 	
-	public EmpruntEnCours(Date dateEmprunt, Utilisateur emprunteur,	Exemplaire exemplaire) throws BiblioException {
+	public EmpruntEnCours(Date dateEmprunt, Utilisateur emprunteur,	Exemplaire exemplaire){
 		setDateEmprunt(dateEmprunt);
 		setEmprunteur(emprunteur);
 		setExemplaire(exemplaire);
 	}
 	
-	public EmpruntEnCours(Date dateEmprunt, Utilisateur emprunteur) throws BiblioException {
+	public EmpruntEnCours(Date dateEmprunt, Utilisateur emprunteur){
 		this(dateEmprunt, emprunteur, null );
 	}
 
 	
-	public EmpruntEnCours() throws BiblioException{
+	public EmpruntEnCours(){
 		this(null, null);
 	}
 
@@ -47,22 +47,30 @@ public class EmpruntEnCours {
 		return unemprunteur;
 	}
 
-	public void setEmprunteur(Utilisateur emprunteur) throws BiblioException {
+	public void setEmprunteur(Utilisateur emprunteur){
 		if (emprunteur != null){			
 			unemprunteur = emprunteur;
 			setDateEmprunt(new Date());
-			}		
+			}
+			
 		}
 
 	public Exemplaire getExemplaire() {
 		return exemplaire;
 	}
 	
-	public void setExemplaire(Exemplaire exemplaire) throws BiblioException {
+	public void setExemplaire(Exemplaire exemplaire) {
 		if (exemplaire != null){
 			 this.exemplaire=exemplaire;
 			 exemplaire.setEmpruntEnCours(this);
 		}
+		else
+			if (this.exemplaire!= null){
+				this.exemplaire.setEmpruntEnCours(null);
+				this.unemprunteur.removeEmpruntEnCours(this);
+				System.out.println(new EmpruntArchive (new Date(), this.dateEmprunt, unemprunteur, this.getExemplaire()));
+				
+			}
 	}
 /**********************************************toString()****************************************************************************************/	
 
