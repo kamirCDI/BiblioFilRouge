@@ -68,7 +68,7 @@ public class EmpruntEnCours {
 			if (this.exemplaire!= null){
 				this.exemplaire.setEmpruntEnCours(null);
 				this.unemprunteur.removeEmpruntEnCours(this);
-				System.out.println(new EmpruntArchive (new Date(), this.dateEmprunt, unemprunteur, this.getExemplaire()));
+				System.out.println("Emprunt est archivé :" + new EmpruntArchive( new Date(), this.dateEmprunt, unemprunteur, this.getExemplaire()));
 				
 			}
 	}

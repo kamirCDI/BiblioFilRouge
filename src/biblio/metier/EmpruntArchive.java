@@ -1,5 +1,6 @@
 package biblio.metier;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class EmpruntArchive {
@@ -10,6 +11,7 @@ public class EmpruntArchive {
 	private Date dateEmprunt;
 	private Utilisateur emprunteur;
 	private Exemplaire exemplaire;
+	public static SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
 
 	
 /*************************************************Constructeur****************************************************************/	
@@ -56,8 +58,8 @@ public class EmpruntArchive {
 /******************************************************toString()***************************************************************************/
 	@Override
 	public String toString() {
-		return "EmpruntArchive [dateRestitutionEff=" + dateRestitutionEff
-				+ ", dateEmprunt=" + dateEmprunt + ", emprunteur=" + emprunteur
-				+ ", exemplaire=" + exemplaire + "]";
+		return "EmpruntArchive [dateRestitutionEff=" + sdf.format(dateRestitutionEff)
+				+ ", dateEmprunt=" + sdf.format(dateEmprunt) + ", emprunteur=" + emprunteur.getIdUtilisateur()
+				+ ", exemplaire=" + exemplaire.getIdExemplaire() + "]";
 	}
 }
