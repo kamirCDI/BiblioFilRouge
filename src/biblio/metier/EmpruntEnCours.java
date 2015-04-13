@@ -1,7 +1,10 @@
 package biblio.metier;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class EmpruntEnCours {
 	
@@ -69,5 +72,17 @@ public class EmpruntEnCours {
 					+ unemprunteur.getNom() + ", examplaire=" + exemplaire.getIdExemplaire() + "]";
 
 	}
+/**********************************classe métier******************************************************************/	
+	public boolean isPretEnRetard() {
+
+		// Instanciation � la date du jour et configuration Timezone et locale
+		Calendar cl = Calendar.getInstance(TimeZone.getDefault(), Locale.getDefault());
+		// Soustraction de la dur�e max de pret
+		cl.add(Calendar.DAY_OF_YEAR, -Adherent.getDureeMaxPrets());
+		// Determine la date mini sans retard
+		Date dateMinSansRetard = cl.getTime();
+		return this.getDateEmprunt().before(dateMinSansRetard);
+	}
+
 
 }

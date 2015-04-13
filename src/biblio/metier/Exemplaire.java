@@ -79,7 +79,7 @@ public class Exemplaire {
 		}
 		else {
 			this.emprunt = null;
-			setStatus(EnumStatusExemplaire.DISPONIBLE);
+			 
 		}
 	}
 

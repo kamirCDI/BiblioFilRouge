@@ -87,7 +87,8 @@ public class Utilisateur extends Personne {
 	
 	public void addEmpruntEnCours(EmpruntEnCours unEmpruntEnCours) throws BiblioException
 	{		
-		empruntEnCours.add(unEmpruntEnCours);	
+		empruntEnCours.add(unEmpruntEnCours);
+		unEmpruntEnCours.setEmprunteur(this);
 	}
 
 }

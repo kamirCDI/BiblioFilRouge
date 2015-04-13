@@ -1,7 +1,6 @@
 package biblio.metier;
 
 import java.text.ParseException;
-
 import java.util.Date;
 
 /**
@@ -20,6 +19,8 @@ public class Adherent extends Utilisateur{
 	private static int dureeMaxPrets=15;
 	
 	
+	
+
 	public Adherent(String nom, String prenom, Date dateNaissance, String sexe, int id, String pwd, String pseudonyme, String telephone) throws ParseException{
 		super(nom, prenom, dateNaissance, sexe, id, pwd, pseudonyme);
 		setTelephone(telephone);
@@ -40,6 +41,10 @@ public class Adherent extends Utilisateur{
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
+	
+	public static int getDureeMaxPrets() {
+		return dureeMaxPrets;
+	}
 
 	/********************************toString()*********************************************************/
 	@Override
@@ -50,7 +55,7 @@ public class Adherent extends Utilisateur{
 	
 	/********************************classes métiers*********************************************/
 	public Boolean isConditionsPretAcceptees(){
-		return (getNbEmpruntsEnCours() < 3);
+		return (getNbEmpruntsEnCours() < 3 && getNbRetards() == 0);
 	}
  
 	
@@ -62,5 +67,15 @@ public class Adherent extends Utilisateur{
 		}
 		else 
 			throw new BiblioException("Les conditions pour un nouveau prêt ne sont pas satisfaites");
+	}
+	
+	public int getNbRetards(){
+		int nb=0;
+		for(EmpruntEnCours s:getEmpruntEnCours())
+		{
+			if(s.isPretEnRetard())
+				nb++;
+		}
+		return nb;
 	}
 }
