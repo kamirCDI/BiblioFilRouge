@@ -111,6 +111,4 @@ public class EmpruntEnCours {
 		this.unemprunteur.removeEmpruntEnCours(this);
 		System.out.println("Emprunt est archivé :" + new EmpruntArchive( new Date(), this.dateEmprunt, unemprunteur, this.getExemplaire()));
 	}
-
-
 }
