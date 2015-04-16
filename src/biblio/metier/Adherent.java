@@ -63,7 +63,6 @@ public class Adherent extends Utilisateur{
 	public void addEmpruntEnCours(EmpruntEnCours unEmpruntEnCours) throws BiblioException {
 		if (isConditionsPretAcceptees()){
 			super.addEmpruntEnCours(unEmpruntEnCours);
-			unEmpruntEnCours.setEmprunteur(this);
 		}
 		else 
 			throw new BiblioException("Les conditions pour un nouveau prêt ne sont pas satisfaites");

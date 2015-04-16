@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import biblio.dao.ExemplairesDao;
 import biblio.dao.UtilisateursDao;
 import biblio.metier.BiblioException;
+import biblio.metier.EmpruntEnCours;
 import biblio.metier.Exemplaire;
 import biblio.metier.Utilisateur;
 
@@ -21,24 +22,25 @@ public class TestEmployeEnRetard {
 		ExemplairesDao exemplaireDao = new ExemplairesDao();		
 		Exemplaire exemplaire1 = exemplaireDao.findByKey(1);
 		Exemplaire exemplaire2 = exemplaireDao.findByKey(2);
+		Exemplaire exemplaire3 = exemplaireDao.findByKey(3);
 		
-		//employe.addEmpruntEnCours(exemplaire1.getEmprunt());
-		//exemplaire1.getEmprunt().setExemplaire(exemplaire1);
-		exemplaire1.getEmprunt().emprunter(exemplaire1, employe);
-		exemplaire1.getEmprunt().setDateEmprunt(sdf.parse("13/03/2015"));
+
+		EmpruntEnCours emprunt1 = new EmpruntEnCours(employe, exemplaire1);
+		EmpruntEnCours emprunt2 = new EmpruntEnCours(employe, exemplaire2);
 		System.out.println("L'employe :");
 		System.out.println(employe);
 		System.out.println();
-		System.out.println("Les emprunts en cours :");
-		System.out.println(exemplaire1.getEmprunt());
+		System.out.println("Les exemplaires en cours :");
+		System.out.println(employe.getNbEmpruntsEnCours());
+		System.out.println(employe.getEmpruntEnCours());
 		System.out.println();
-		System.out.println("************** Réaliser un deuxième prêt******************");
+		System.out.println();
+		System.out.println("************** Réaliser un autre prêt******************");
 		
 		try {
-		//employe.addEmpruntEnCours(exemplaire2.getEmprunt());
-		//exemplaire2.getEmprunt().setExemplaire(exemplaire2);
-			exemplaire2.getEmprunt().emprunter(exemplaire2, employe);
-			System.out.println(exemplaire2.getEmprunt());
+			EmpruntEnCours emprunt3 = new EmpruntEnCours(employe, exemplaire3);
+			System.out.println(employe.getNbEmpruntsEnCours());
+			System.out.println(employe.getEmpruntEnCours());
 		}
 		catch (BiblioException e){
 			System.out.println(e);

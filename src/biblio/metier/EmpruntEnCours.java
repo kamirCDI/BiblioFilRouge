@@ -22,20 +22,21 @@ public class EmpruntEnCours {
 
 
 	
-	/*******************************************Constructeurs*******************************************************************/
+	/*******************************************Constructeurs
+	 * @throws BiblioException *******************************************************************/
 	
-	public EmpruntEnCours(Date dateEmprunt, Utilisateur emprunteur,	Exemplaire exemplaire){
+	public EmpruntEnCours(Date dateEmprunt, Utilisateur emprunteur,	Exemplaire exemplaire) throws BiblioException{
 		setDateEmprunt(dateEmprunt);
 		setEmprunteur(emprunteur);
 		setExemplaire(exemplaire);
 	}
 	
-	public EmpruntEnCours(Date dateEmprunt, Utilisateur emprunteur){
-		this(dateEmprunt, emprunteur, null );
+	public EmpruntEnCours( Utilisateur emprunteur,	Exemplaire exemplaire) throws BiblioException{
+		this(new Date(), emprunteur, exemplaire);
 	}
 
 	
-	public EmpruntEnCours(){
+	public EmpruntEnCours() throws BiblioException{
 		this(null, null);
 	}
 
@@ -52,12 +53,12 @@ public class EmpruntEnCours {
 		return unemprunteur;
 	}
 
-	public void setEmprunteur(Utilisateur emprunteur){
-		if (emprunteur != null){			
+	public void setEmprunteur(Utilisateur emprunteur) throws BiblioException{
+		if (emprunteur != null){
 			unemprunteur = emprunteur;
+			unemprunteur.addEmpruntEnCours(this);
 			setDateEmprunt(new Date());
-			}
-			
+			}		
 		}
 
 	public Exemplaire getExemplaire() {
@@ -103,13 +104,7 @@ public class EmpruntEnCours {
 		Date dateMinSansRetard = cl.getTime();
 		return this.getDateEmprunt().before(dateMinSansRetard);
 	}
-	
-	public void emprunter(Exemplaire exemplaire, Utilisateur utilisateur) throws BiblioException
-	{
-		utilisateur.addEmpruntEnCours(this);
-		setExemplaire(exemplaire); 
-	}
-	
+
 	public void rendre(Exemplaire exemplaire, Utilisateur utilisateur) throws BiblioException
 	{
 		this.exemplaire.setEmpruntEnCours(null);

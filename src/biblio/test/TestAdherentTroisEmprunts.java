@@ -5,6 +5,7 @@ import java.text.ParseException;
 import biblio.dao.ExemplairesDao;
 import biblio.dao.UtilisateursDao;
 import biblio.metier.BiblioException;
+import biblio.metier.EmpruntEnCours;
 import biblio.metier.Exemplaire;
 import biblio.metier.Utilisateur;
 
@@ -23,32 +24,25 @@ public class TestAdherentTroisEmprunts {
 		
 		UtilisateursDao utilisateurDao = new UtilisateursDao();
 		Utilisateur adherent = utilisateurDao.findByKey(100);
-		
-		//adherent.addEmpruntEnCours(exemplaire1.getEmprunt());
-		//exemplaire1.getEmprunt().setExemplaire(exemplaire1);
-		exemplaire1.getEmprunt().emprunter(exemplaire1, adherent);
-		
-		//adherent.addEmpruntEnCours(exemplaire2.getEmprunt());
-		//exemplaire2.getEmprunt().setExemplaire(exemplaire2);
-		exemplaire2.getEmprunt().emprunter(exemplaire2, adherent);
-		
-		//adherent.addEmpruntEnCours(exemplaire3.getEmprunt());
-		//exemplaire3.getEmprunt().setExemplaire(exemplaire3);
-		exemplaire3.getEmprunt().emprunter(exemplaire3, adherent);
-		
+				
+		EmpruntEnCours emprunt1 = new EmpruntEnCours(adherent, exemplaire1);
+		EmpruntEnCours emprunt2 = new EmpruntEnCours(adherent, exemplaire2);
+		EmpruntEnCours emprunt3 = new EmpruntEnCours(adherent, exemplaire3);
+			
 		System.out.println("L'adherent");
 		System.out.println(adherent);
 		System.out.println();
 		System.out.println("Les emprunts en cours de l'adherent");
-		System.out.println(adherent.getEmpruntEnCours());
+		
+		for (EmpruntEnCours emprunt : adherent.getEmpruntEnCours())
+			System.out.println(adherent.getEmpruntEnCours());
 		System.out.println("Nombre d'emprunts en cours :"+adherent.getNbEmpruntsEnCours());
 		System.out.println();
 		System.out.println("********************Réaliser un quatrième prêt**********************");
 		try {
-		//adherent.addEmpruntEnCours(exemplaire4.getEmprunt());
-		//exemplaire4.getEmprunt().setExemplaire(exemplaire4);
-		exemplaire4.getEmprunt().emprunter(exemplaire4, adherent);
-		System.out.println(exemplaire4.getEmprunt());
+		
+			EmpruntEnCours emprunt4 = new EmpruntEnCours(adherent, exemplaire4);
+			System.out.println(emprunt4);
 		}
 		catch (BiblioException ex){
 			System.out.println(ex);

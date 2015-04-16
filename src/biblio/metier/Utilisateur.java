@@ -89,11 +89,10 @@ public class Utilisateur extends Personne {
 	public void addEmpruntEnCours(EmpruntEnCours unEmpruntEnCours) throws BiblioException
 	{		
 		empruntEnCours.add(unEmpruntEnCours);
-		unEmpruntEnCours.setEmprunteur(this);
 	}
 
 	
-	public void removeEmpruntEnCours(EmpruntEnCours unEmpruntEnCours)
+	public void removeEmpruntEnCours(EmpruntEnCours unEmpruntEnCours) throws BiblioException
 	{	
 		if (empruntEnCours.remove(unEmpruntEnCours) == true)
 		empruntEnCours.remove(unEmpruntEnCours);

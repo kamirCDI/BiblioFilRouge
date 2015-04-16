@@ -21,15 +21,11 @@ public class Exemplaire {
 
 /*******************************constructeur***********************************************/
 
-	
-
 	public Exemplaire(int id, Date dateAchat, String isbn) throws ParseException{
 		setIdExemplaire(id);
 		setDateAchat(dateAchat);
-		setIsbn(isbn);	
-		emprunt = new EmpruntEnCours();
+		setIsbn(isbn);
 	}
-
 	
 	public Exemplaire() throws ParseException
 	{
@@ -83,8 +79,7 @@ public class Exemplaire {
 		}
 		else {
 			setStatus(EnumStatusExemplaire.DISPONIBLE);
-			this.emprunt = null;
-			 
+			this.emprunt = null;			 
 		}
 	}
 
