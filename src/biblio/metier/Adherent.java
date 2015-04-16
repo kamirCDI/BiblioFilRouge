@@ -19,7 +19,7 @@ public class Adherent extends Utilisateur{
 	private static int dureeMaxPrets=15;
 	
 	
-	
+/******************************************Constructeurs**************************************************************************************/	
 
 	public Adherent(String nom, String prenom, Date dateNaissance, String sexe, int id, String pwd, String pseudonyme, String telephone) throws ParseException{
 		super(nom, prenom, dateNaissance, sexe, id, pwd, pseudonyme);

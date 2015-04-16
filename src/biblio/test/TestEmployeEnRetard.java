@@ -31,13 +31,14 @@ public class TestEmployeEnRetard {
 		System.out.println();
 		System.out.println("Les emprunts en cours :");
 		System.out.println(exemplaire1.getEmprunt());
+		System.out.println();
 		System.out.println("************** Réaliser un deuxième prêt******************");
 		
 		try {
 		//employe.addEmpruntEnCours(exemplaire2.getEmprunt());
 		//exemplaire2.getEmprunt().setExemplaire(exemplaire2);
 			exemplaire2.getEmprunt().emprunter(exemplaire2, employe);
-		System.out.println(exemplaire2.getEmprunt());
+			System.out.println(exemplaire2.getEmprunt());
 		}
 		catch (BiblioException e){
 			System.out.println(e);

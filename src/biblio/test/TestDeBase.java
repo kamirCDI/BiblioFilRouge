@@ -17,7 +17,7 @@ public class TestDeBase {
 	
 		
 		
-		System.out.println("*******************Demande de deux exemplaires par leur id aux Dao*******************************");
+		System.out.println("*******************Demande de deux exemplaires par leur id aux Dao******************************");
 		ExemplairesDao exemplaireDao = new ExemplairesDao();
 		
 		Exemplaire exemplaire1 = exemplaireDao.findByKey(1);

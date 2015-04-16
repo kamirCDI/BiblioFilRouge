@@ -38,6 +38,7 @@ public class TestAdherentEnRetard {
 		System.out.println();
 		System.out.println("Les exemplaires en cours :");
 		System.out.println(exemplaire1.getEmprunt());
+		System.out.println();
 		System.out.println("************** Réaliser un deuxième prêt******************");
 		
 		try {

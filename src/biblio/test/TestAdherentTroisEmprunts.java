@@ -13,7 +13,7 @@ public class TestAdherentTroisEmprunts {
 	public static void main(String[] args) throws BiblioException, ParseException {
 		
 		
-		System.out.println("********************Si trois emprunts en retard, il est impossible d'emprunter pour un Adhérent**********************");
+		System.out.println("*******************Si trois emprunts en retard, il est impossible d'emprunter pour un Adhérent**********************");
 		ExemplairesDao exemplaireDao = new ExemplairesDao();
 		
 		Exemplaire exemplaire1 = exemplaireDao.findByKey(1);
@@ -41,6 +41,7 @@ public class TestAdherentTroisEmprunts {
 		System.out.println();
 		System.out.println("Les emprunts en cours de l'adherent");
 		System.out.println(adherent.getEmpruntEnCours());
+		System.out.println("Nombre d'emprunts en cours :"+adherent.getNbEmpruntsEnCours());
 		System.out.println();
 		System.out.println("********************Réaliser un quatrième prêt**********************");
 		try {

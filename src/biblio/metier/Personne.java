@@ -24,6 +24,7 @@ public class Personne {
 	public static SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
 	static {sdf.setLenient(false);}
 	
+	
 /*****************Constructeur*******************************************************/
 	public Personne(String nom, String prenom, Date dateNaissance, String sexe) throws ParseException{
 		setNom(nom);
@@ -35,6 +36,7 @@ public class Personne {
 	public Personne() throws ParseException{
 		this("Dupont", "Robert", sdf.parse("19/05/1970"), "masculin");
 	}
+	
 	/******************Getters et Setters************************************************/
 	
 	public String getNom() {
@@ -68,7 +70,8 @@ public class Personne {
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
-
+/******************************************toString()***********************************************************************/
+	
 	@Override
 	public String toString() {
 		return "Personne [nom=" + nom + ", prenom=" + prenom

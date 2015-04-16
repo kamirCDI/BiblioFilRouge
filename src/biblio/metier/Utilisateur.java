@@ -24,6 +24,7 @@ public class Utilisateur extends Personne {
 	private String pseudonyme;
 	private List<EmpruntEnCours> empruntEnCours = new ArrayList<EmpruntEnCours>();
 	
+	
 /***************************************Constructeur*****************************************************************/
 	public Utilisateur(String nom, String prenom, Date dateNaissance,
 			String sexe, int id, String pwd, String pseudonyme) throws ParseException {

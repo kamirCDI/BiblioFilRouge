@@ -1,9 +1,13 @@
 package biblio.metier;
 
 import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+/*classe des exemplaire d'un livre
+ * */
 
 public class Exemplaire {
 	

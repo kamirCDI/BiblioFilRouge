@@ -9,6 +9,7 @@ import java.util.Date;
 /**
  * @author afpa
  * Classe Employé de la bibliothèque
+ * responsable ou bibliothécaire ou gestionnaire de fonds
  *
  */
 public class Employe extends Utilisateur{

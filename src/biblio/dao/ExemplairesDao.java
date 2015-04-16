@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * @author Kamir_2
+ * simule base de données pour Exemplaires
  *
  */
 public class ExemplairesDao {

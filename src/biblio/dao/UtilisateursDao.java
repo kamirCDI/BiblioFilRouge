@@ -17,6 +17,7 @@ import biblio.metier.BiblioException;
 
 /**
  * @author Kamir_2
+ * simule base de données pour Utilisateurs
  *
  */
 public class UtilisateursDao {

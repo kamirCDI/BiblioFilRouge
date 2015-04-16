@@ -3,6 +3,10 @@ package biblio.metier;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/*
+ * Classe pour emprunt à archiver
+ */
+
 public class EmpruntArchive {
 
 	private Date dateRestitutionEff;

@@ -39,6 +39,7 @@ public class TestEmployeTroisEmprunts {
 		System.out.println();
 		System.out.println("Les emprunts en cours de l'employe");
 		System.out.println(employe.getEmpruntEnCours());
+		System.out.println("Nombre d'emprunts en cours :"+employe.getNbEmpruntsEnCours() );
 		System.out.println();
 		System.out.println("********************Réaliser un quatrième prêt**********************");
 		try {
