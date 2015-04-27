@@ -1,7 +1,6 @@
 package biblio.metier;
 
 import java.text.SimpleDateFormat;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -23,7 +22,7 @@ public class EmpruntEnCours {
 
 	
 	/*******************************************Constructeurs
-	 * @throws BiblioException *******************************************************************/
+	 * 	 * @throws BiblioException *******************************************************************/
 	
 	public EmpruntEnCours(Date dateEmprunt, Utilisateur emprunteur,	Exemplaire exemplaire) throws BiblioException{
 		setDateEmprunt(dateEmprunt);
@@ -79,7 +78,7 @@ public class EmpruntEnCours {
 			}
 	}*/
 	
-	public void setExemplaire(Exemplaire exemplaire) {
+	public void setExemplaire(Exemplaire exemplaire) throws BiblioException {
 		if (exemplaire != null){
 			 this.exemplaire=exemplaire;
 			 exemplaire.setEmpruntEnCours(this);
@@ -105,10 +104,11 @@ public class EmpruntEnCours {
 		return this.getDateEmprunt().before(dateMinSansRetard);
 	}
 
-	public void rendre(Exemplaire exemplaire, Utilisateur utilisateur) throws BiblioException
-	{
-		this.exemplaire.setEmpruntEnCours(null);
-		this.unemprunteur.removeEmpruntEnCours(this);
-		System.out.println("Emprunt est archivé :" + new EmpruntArchive( new Date(), this.dateEmprunt, unemprunteur, this.getExemplaire()));
-	}
+@Override
+public void finalize() throws Throwable {
+	super.finalize();
+	exemplaire.setEmpruntEnCours(null);	
+}
+
+	
 }

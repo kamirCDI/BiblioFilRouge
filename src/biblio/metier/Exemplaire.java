@@ -1,7 +1,6 @@
 package biblio.metier;
 
 import java.text.ParseException;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -72,14 +71,20 @@ public class Exemplaire {
 	}
 	
 	
-	public void setEmpruntEnCours(EmpruntEnCours empruntEnCours){
+	public void setEmpruntEnCours(EmpruntEnCours empruntEnCours) throws BiblioException{
 		if (empruntEnCours != null){
 				this.emprunt= empruntEnCours;
 				setStatus(EnumStatusExemplaire.PRETE);
 		}
 		else {
-			setStatus(EnumStatusExemplaire.DISPONIBLE);
-			this.emprunt = null;			 
+			if (this.emprunt != null){
+				setStatus(EnumStatusExemplaire.DISPONIBLE);
+				this.emprunt.getEmprunteur().removeEmpruntEnCours(this.emprunt);
+				System.out.println("Emprunt est archivé :" + new EmpruntArchive( new Date(), this.emprunt.getDateEmprunt(), this.emprunt.getEmprunteur(), this.emprunt.getExemplaire()));
+				this.emprunt = empruntEnCours;		
+				
+			}
+			
 		}
 	}
 

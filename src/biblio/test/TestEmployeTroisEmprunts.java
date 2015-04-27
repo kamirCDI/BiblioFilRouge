@@ -31,9 +31,9 @@ public class TestEmployeTroisEmprunts {
 		System.out.println("L'employe");
 		System.out.println(employe);
 		System.out.println();
-		System.out.println("Les emprunts en cours de l'employe");
+		System.out.println("Les emprunts en cours de l'employe :");
 		for (EmpruntEnCours emprunt : employe.getEmpruntEnCours())
-			System.out.println(employe.getEmpruntEnCours());
+			System.out.println(emprunt);
 		System.out.println("Nombre d'emprunts en cours :"+employe.getNbEmpruntsEnCours());
 		System.out.println();
 		System.out.println();
@@ -41,9 +41,9 @@ public class TestEmployeTroisEmprunts {
 		try {
 		
 			EmpruntEnCours emprunt4 = new EmpruntEnCours(employe, exemplaire4);
-			System.out.println("Les emprunts en cours de l'employe");
+			System.out.println("Les emprunts en cours de l'employe :");
 			for (EmpruntEnCours emprunt : employe.getEmpruntEnCours())
-				System.out.println(employe.getEmpruntEnCours());
+				System.out.println(emprunt);
 			System.out.println("Nombre d'emprunts en cours :"+employe.getNbEmpruntsEnCours());
 		}
 		catch (BiblioException ex){

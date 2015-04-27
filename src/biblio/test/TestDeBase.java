@@ -48,20 +48,14 @@ public class TestDeBase {
 		System.out.println("**********************Création d'un emprunt en cours pour un adhérent*******************************");
 		System.out.println();
 		EmpruntEnCours emprunt1 = new EmpruntEnCours(adherent, exemplaire1);
-		//adherent.addEmpruntEnCours(exemplaire1.getEmprunt());
-		//exemplaire1.getEmprunt().setExemplaire(exemplaire1);
-		//exemplaire1.getEmprunt().emprunter(exemplaire1, adherent);
-		//System.out.println(exemplaire1.getEmprunt());
+		
 		System.out.println(emprunt1);
 		System.out.println();
 		System.out.println();
 		System.out.println("**********************Création d'un emprunt en cours pour un Employé*******************************");
 		System.out.println();
-		//employe.addEmpruntEnCours(exemplaire2.getEmprunt());
-		//exemplaire2.getEmprunt().setExemplaire(exemplaire2);
+		
 		EmpruntEnCours emprunt2 = new EmpruntEnCours(employe, exemplaire2);
-		//exemplaire1.getEmprunt().emprunter(exemplaire2, employe);
-		//System.out.println(exemplaire2.getEmprunt());
 		System.out.println(emprunt2);
 		System.out.println();
 		System.out.println();

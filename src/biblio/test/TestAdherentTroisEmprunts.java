@@ -35,7 +35,7 @@ public class TestAdherentTroisEmprunts {
 		System.out.println("Les emprunts en cours de l'adherent");
 		
 		for (EmpruntEnCours emprunt : adherent.getEmpruntEnCours())
-			System.out.println(adherent.getEmpruntEnCours());
+			System.out.println(emprunt);
 		System.out.println("Nombre d'emprunts en cours :"+adherent.getNbEmpruntsEnCours());
 		System.out.println();
 		System.out.println("********************Réaliser un quatrième prêt**********************");
